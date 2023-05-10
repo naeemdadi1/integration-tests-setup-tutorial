@@ -18,10 +18,6 @@ query products{
 describe('Integration test for products', () => {
   const OLD_ENV = process.env;
   beforeEach(() => {
-    jest.resetModules();
-    jest.unmock('@database');
-    jest.unmock('@database/models');
-    jest.unmock('ioredis');
     process.env = { ...OLD_ENV };
     process.env = { ...process.env, ...getMockDBEnv(), REDIS_PORT: 6380 };
   });

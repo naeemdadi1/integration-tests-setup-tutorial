@@ -2,7 +2,7 @@ name: Node Express GraphQL Template CI
 
 on:
   pull_request:
-    branches: 
+    branches:
       - develop
   push:
     branches:
@@ -29,8 +29,10 @@ jobs:
         run: yarn install
       - name: Lint
         run: yarn lint
-      - name: Test
+      - name: Run Unit Test
         run: yarn test
+      - name: Run Integration Test
+        run: yarn test:integration
       - name: Build
         run: yarn build:local
       - name: SonarQube Scan

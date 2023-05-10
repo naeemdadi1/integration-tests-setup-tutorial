@@ -1,8 +1,3 @@
-/* eslint-disable import/first */
-require('dotenv').config({
-  path: '.env.test'
-});
-
 import { mockDBClient } from '@server/utils/testUtils';
 import { DB_ENV } from '@utils/testUtils/mockData';
 

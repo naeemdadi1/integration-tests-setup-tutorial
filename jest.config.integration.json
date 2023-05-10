@@ -1,6 +1,6 @@
 {
   "testEnvironment": "node",
-  "setupFilesAfterEnv": ["./jest.setup.js"],
+  "setupFilesAfterEnv": ["./jest.setup.integration.js"],
   "reporters": [
     "default",
     [
@@ -36,5 +36,8 @@
       "functions": 82,
       "lines": 82
     }
-  }
+  },
+  "roots": ["__tests__"],
+  "globalSetup": "./test_setup/global-setup.js",
+  "globalTeardown": "./test_setup/global-teardown.js"
 }
