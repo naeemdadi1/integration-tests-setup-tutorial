@@ -1,4 +1,4 @@
-import redis from 'redis-mock';
+const { setRedisData, getRedisData } = require('@server/services/redis');
 const { getMockDBEnv, getResponse } = require('@server/utils/testUtils');
 const { get } = require('lodash');
 
@@ -35,13 +35,11 @@ describe('Integration test for products', () => {
     });
   });
 
-  it('should set and get data from redis', done => {
-    const redisClient = redis.createClient();
-    redisClient.set('product', 'test', () => {
-      redisClient.get('product', (_err, redisValue) => {
-        expect(redisValue).toBe('test');
-        done();
-      });
-    });
+  it('should set and get data from redis', async () => {
+    const testKey = 'product';
+    const testValue = 'test';
+    await setRedisData(testKey, testValue);
+    const result = await getRedisData(testKey);
+    expect(result).toBe(testValue);
   });
 });
