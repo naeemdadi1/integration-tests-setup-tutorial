@@ -1,6 +1,6 @@
 {
   "testEnvironment": "node",
-  "setupFilesAfterEnv": ["./jest.setup.js"],
+  "setupFilesAfterEnv": ["./jest.setup.integration.js"],
   "reporters": [
     "default",
     [
@@ -23,18 +23,13 @@
     "!**server/middleware/logger/index.js"
   ],
   "coverageReporters": ["json-summary", "text", "lcov"],
-  "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/__tests__/"],
+  "testPathIgnorePatterns": ["<rootDir>/dist/"],
   "moduleNameMapper": {
     "@server(.*)$": "<rootDir>/server/$1",
     "@(database|services|gql|middleware|daos|utils)(.*)$": "<rootDir>/server/$1/$2",
     "slack-notify": "<rootDir>/node_modules/slack-notify/src/cjs/index.js"
   },
-  "coverageThreshold": {
-    "global": {
-      "statements": 82,
-      "branches": 82,
-      "functions": 82,
-      "lines": 82
-    }
-  }
+  "roots": ["__tests__"],
+  "globalSetup": "./test_setup/global-setup.js",
+  "globalTeardown": "./test_setup/global-teardown.js"
 }
